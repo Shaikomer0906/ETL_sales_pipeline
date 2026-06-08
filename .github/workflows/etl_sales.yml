@@ -1,0 +1,73 @@
+name: ETL Sales Pipeline CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 8 * * *'
+
+jobs:
+  run-etl:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres123
+          POSTGRES_DB: sales_practice
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pandas psycopg2-binary sqlalchemy python-dotenv
+
+      - name: Create tables
+        env:
+          PGPASSWORD: postgres123
+        run: |
+          psql -h localhost -U postgres -d sales_practice -c "
+          CREATE TABLE IF NOT EXISTS sales_clean (
+              sale_id           VARCHAR(20) PRIMARY KEY,
+              product_name      VARCHAR(100),
+              region            VARCHAR(50),
+              sale_date         DATE,
+              quantity          INTEGER,
+              unit_price        NUMERIC(10,2),
+              salesperson_email VARCHAR(255),
+              loaded_at         TIMESTAMP DEFAULT NOW()
+          );"
+
+      - name: Create .env file
+        run: |
+          echo "DB_HOST=localhost" >> .env
+          echo "DB_PORT=5432" >> .env
+          echo "DB_NAME=sales_practice" >> .env
+          echo "DB_USER=postgres" >> .env
+          echo "DB_PASSWORD=postgres123" >> .env
+
+      - name: Run ETL pipeline
+        run: |
+          python etl_sales.py
+
+      - name: Verify rows loaded
+        env:
+          PGPASSWORD: postgres123
+        run: |
+          psql -h localhost -U postgres -d sales_practice -c "SELECT * FROM sales_clean;"
