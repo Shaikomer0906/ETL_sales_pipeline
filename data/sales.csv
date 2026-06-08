@@ -1,0 +1,17 @@
+sale_id,product_name,region,sale_date,quantity,unit_price,salesperson_email
+S001,Laptop,North,2024-01-10,2,999.99,john.sales@company.com
+S002,Mouse,south,2024/02/15,abc,25.50,jane.smith@company.com
+S003,Keyboard,EAST,2024-03-20,1,75.00,not-an-email
+S004,Monitor,West,2024-13-50,3,350.00,mike.j@company.com
+S001,Laptop,North,2024-01-10,2,999.99,john.sales@company.com
+S005,Headphones,,2024-04-05,2,150.00,sara.k@company.com
+S006,,South,2024-05-12,1,45.00,tom.b@company.com
+S007,Webcam,East,2024-06-01,0,89.99,leo.n@company.com
+S008,Tablet,West,2024-07-18,2,499.99,nina.p@company.com
+S009,Charger,North,2024-08-01,3,29.99,ahmed.k@company.com
+S010,SSD Drive,South,2024-08-05,1,120.00,priya.m@company.com
+S011,Docking Station,East,2024-08-10,2,199.99,carlos.r@company.com
+S012,Microphone,North,2024-09-01,1,79.99,omar.k@company.com
+S013,Webcam Stand,South,2024-09-03,2,34.99,lisa.m@company.com
+
+

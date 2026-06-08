@@ -1,0 +1,13 @@
+member_id,first_name,last_name,dob,email,plan_type,enrollment_date,monthly_premium
+1001,John,Smith,1985-04-12,john.smith@email.com,Gold,2023-01-15,450.00
+1002,jane,DOE,1990/07/22,jane.doe@email.com,silver,2023-02-01,320.50
+1003,Bob,,1978-11-30,bob.wilson@email.com,Gold,2023-01-20,450.00
+1004,Alice,Johnson,1995-13-45,alice.j@email.com,Platinum,2023-03-10,600.00
+1002,jane,DOE,1990/07/22,jane.doe@email.com,silver,2023-02-01,320.50
+1005,Carlos,Rivera,,carlos.r@email.com,Bronze,2023-04-05,180.00
+1006,Mary,Williams,1982-09-14,not-an-email,Gold,2023-01-30,450.00
+1007,Tom,Brown,1970-06-25,tom.brown@email.com,GOLD,15/01/2023,450.00
+1008,,Davis,2001-02-18,k.davis@email.com,Silver,2023-05-12,320.50
+1009,Nina,Patel,1993-08-07,nina.p@email.com,Bronze,2023-04-22,ABC
+1010,Leo,Nguyen,1988-12-01,leo.n@email.com,Diamond,2023-06-01,275.00
+1011,Sara,Kim,1996-03-19,sara.kim@email.com,Gold,2023-01-15,450.00
